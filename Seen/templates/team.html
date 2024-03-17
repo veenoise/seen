@@ -1,0 +1,161 @@
+{% extends "index-base.html" %}
+{% block title%}Seen | Team{% endblock %}
+{% block home %}
+<a class="nav-link btn btn-dark" href="{{ url_for('index') }}">Home</a>
+{% endblock%}
+{% block team %}
+<a class="nav-link active" aria-current="page" href="{{ url_for('team') }}">Team</a>
+{% endblock%}
+{% block leaderboards %}
+<a class="nav-link btn btn-dark d-flex align-items-center" href="{{ url_for('leaderboards') }}">
+  <img src="{{ url_for('static', filename='awards.png') }}" alt="awards" width="25" height="25">
+  <span id="score">0</span>
+</a>
+{% endblock%}
+
+{% block content %}
+<div class="container mt-4">
+  <h1 class="white text-center mb-4">{{ team_name }}</h1>
+  <table class="table table-dark table-striped table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col" class="col-6">Username</th>
+        <th scope="col" class="col-3">Role</th>
+        <th scope="col" class="col-3">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if role == 'Leader' %}
+        {% for i in item %}
+          <tr>
+            <td>{{ i['username'] }}</td>
+            <td>{{ i['role'] }}</td>
+            <td>
+              {% if i['role'] == 'Leader' %}
+                <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Leave</button>
+              {% elif i['role'] == 'Member' %}
+                <button type="button" class="btn btn-success" name="{{ i['username'] }}">Promote</button>
+                <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Kick</button>
+              {% elif i['role'] == 'Pending' %}
+                <button type="button" class="btn btn-success" name="{{ i['username'] }}">Accept</button>   
+                <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Reject</button>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+
+      {% elif role == 'Member' %}
+        {% for i in item %}
+          <tr>
+            <td>{{ i['username'] }}</td>
+            <td>{{ i['role'] }}</td>
+            <td>
+              {% if i['username'] == session['username'] %}
+                <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Leave</button>
+
+              {% elif i['role'] == 'Pending' %}
+                <button type="button" class="btn btn-success" name="{{ i['username'] }}">Accept</button>   
+                <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Reject</button>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+
+      {% else %}
+        {% for i in item %}
+          <tr>
+            <td>{{ i['username'] }}</td>
+            <td>{{ i['role'] }}</td>
+            <td>
+              {% if i['username'] == session['username'] %}
+                <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Leave</button>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>        
+  </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    function updateScore() {
+      fetch("{{ url_for('get_index') }}",{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => {
+        return res.json()
+      }).then(data => {
+        let score = data.score;
+        $("#score")[0].innerHTML = score;
+      });
+    }    
+
+    updateScore();
+    setInterval(function() {
+      updateScore();
+    }, 2000);
+    $("table").on("click", ".btn", function(){
+      let btnName = this['name'];
+      let btnAction = this['innerHTML'];
+      fetch("{{ url_for('team') }}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: btnName,
+          action: btnAction
+        })
+      }).then(res => {
+        if (res.ok) {
+          console.log("Successful POST");
+          getUpdates();
+          return res.json();
+        } else {
+          console.error("POST request failed with status:", res.status);
+          return Promise.reject("POST request failed");
+        }
+      }).catch(error => {
+        console.error("Error during POST request:", error);
+      });
+    });
+
+    setInterval(function() {
+      getUpdates();
+    }, 5000);
+
+    
+  });
+
+  function getUpdates() {
+    fetch("{{ url_for('get_team') }}", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }    
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        console.error("GET request failed with status:", res.status);
+        return Promise.reject("GET request failed");
+      }
+    }).then(data => {
+      refreshPage(data);
+    }).catch(error => {
+      console.error("Error during GET request:", error);
+      location.reload();
+    });
+  };
+  function refreshPage(dataIn) {
+    $("tbody").replaceWith(dataIn);
+  };
+</script>
+{% endblock %}

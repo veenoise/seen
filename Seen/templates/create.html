@@ -1,0 +1,7 @@
+{% extends "team-signin-base.html" %}
+{% block title %}Seen | Create {% endblock %}
+{% block join %}<a class="nav-link btn btn-dark" href="{{ url_for('join') }}">Join</a>{% endblock %}
+{% block create %}<a class="nav-link active" aria-current="page" href="#">Create</a>{% endblock %}
+{% block h1 %}Lead a team{% endblock %}
+{% block action %}{{ url_for('create') }}{% endblock %}
+{% block button %}Create{% endblock %}

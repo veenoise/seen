@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bank</title>
+    <link rel="icon" href="{{ url_for('static', filename='bank-icon.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bank.css') }}">
+  </head>
+  <body>
+    <nav class="navbar bg-primary mb-5">
+      <div class="container-fluid d-flex justify-content-center">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="{{ url_for('static', filename='bank-icon.png') }}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+          BANK
+        </a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <form action="{{ url_for('bank') }}" method="post">
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="cardNumber" placeholder="" name="cardNo" required>
+          <label for="cardNumber">Card Number</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="pin" placeholder="" name="pin" required>
+          <label for="pin">Pin</label>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Submit</button>  
+        </div>      
+      </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+      // $(document).ready(function() {
+      //   $("form").submit(e => {
+      //     e.preventDefault();
+      //   });    
+
+      //   $(".btn-primary").on("click", res => {
+      //     let pin = res.target.parentElement.previousElementSibling.children[0]['value'];
+      //     let cardNo = res.target.parentElement.previousElementSibling.previousElementSibling.children[0]['value']          
+          
+      //     fetch("{{ url_for('bank') }}", {
+      //       method: 'POST',
+      //       headers: {
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify({
+      //         'pin': pin,
+      //         'cardNo': cardNo
+      //       })
+      //     })
+      //   })
+      // })
+      
+    </script>
+    
+  </body>
+</html>

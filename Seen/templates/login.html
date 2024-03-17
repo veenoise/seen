@@ -1,0 +1,6 @@
+{% extends "auth-base.html" %}
+{% block title %}Seen | Login{% endblock %}
+{% block login %}<a class="nav-link active" aria-current="page" href="#">Login</a>{% endblock %}
+{% block register %}<a class="nav-link btn btn-dark" href="{{ url_for('register') }}">Register</a>{% endblock %}
+{% block h1 %}Login{% endblock %}
+{% block action %}{{ url_for('login') }}{% endblock %}

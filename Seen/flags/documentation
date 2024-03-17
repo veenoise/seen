@@ -1,0 +1,42 @@
+Introduction
+	FLAG{IKnowYou}
+
+Whispers of the Departed
+	Decrypt with ROT13 
+	FLAG{SophiaYouWillBeMissed}
+
+The Enigmatic Note
+	Decode Base64
+	FLAG{PeepingThrough}
+
+Cryptic Trails
+	Change numbers to letters 1-26 
+	FLAG{IWasHere}
+
+Decrypting Secret Wish
+	Used Variant Beaufort cipher with key of seen
+	FLAG{YouCantCatchMe}
+
+Metadata Mayhem
+	Downloaded the image, viewed the metadata with exiftool
+	FLAG{ComeAtMe}
+
+Beyond The Screen
+	Looked at the garage.js file
+	FLAG{YoureGettingOnMyNerves}
+
+Following The Money Trail
+	The password is 123456
+	FLAG{IGotTheMoolah}
+
+Virtual Artifacts
+	Adjusted color curves using GIMP
+	FLAG{DontSquintYourEyesCutiePie}
+
+Hidden in Plain Sight
+	View page source or inspect elements, it is commented in the HTML
+	FLAG{YoureGettingTooClose}
+
+Who Is The Abductor?
+	Extract the file and find the correct file
+	FLAG{ItsYouAllAlong}

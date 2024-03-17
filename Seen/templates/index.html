@@ -1,0 +1,416 @@
+{% extends "index-base.html" %}
+{% block title%}Seen{% endblock %}
+{% block home %}
+<a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+{% endblock%}
+{% block team %}
+<a class="nav-link btn btn-dark" href="{{ url_for('team') }}">Team</a>
+{% endblock%}
+{% block leaderboards %}
+<a class="nav-link btn btn-dark d-flex align-items-center" href="{{ url_for('leaderboards') }}">
+  <img src="{{ url_for('static', filename='awards.png') }}" alt="awards" width="25" height="25">
+  <span id="score">0</span>
+</a>
+{% endblock%}
+
+{%block content%}
+<div class="container mt-4">
+  <button class="btn btn-secondary wide text-start " type="button" data-bs-toggle="collapse" data-bs-target="#collapseIntroduction" aria-expanded="false" aria-controls="collapseExample">
+    Introduction
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseIntroduction">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p class="text-justifiy">
+        You, a skilled hacker, are immersed in your routine, effortlessly exploiting misconfigured devices with your trusty tool. "Alright, victim number 5 down for the day. Easy as pie!" As you launch your sixth attack, you stumble upon a vulnerable device, but this time, something feels different. The person on the other end seems visibly distressed. Within minutes, an ominous figure in a black hoodie materializes in the background, adding an unexpected twist to your cyber adventure.
+      </p>                                                                                                                                                  
+      <p>
+        He covers the woman's mouth with a cloth, rendering the victim unconscious. At first, the woman struggles as she tries fighting back. But after about 20 seconds, the noise subsided. You are watching as the guy in the hoodie slowly drags the woman away from the camera's field of vision.
+      </p>    
+      <p>
+        2 minutes went, your wide, unblinking eye still recovering from what happened. Gradually, in an eerie manner, the guy with the black hoodie returns to the camera and appears to be searching for something. He crouches and pauses for a moment. Suddenly, he turns his head towards the camera. Slowly approaching, his eyes directly gazing into the camera.
+      </p>
+      <p>
+        He stops and leans in at the camera. You look at him dead in the eye. And in the room's silence, he faintly says, "I am one with the shadows, watching..."
+      </p>    
+      <p>
+        Flag format is always FLAG{WordsInside}. The words inside the flag are written in Pascal case and contains no puctuations.
+      </p>
+      <P>
+        Try submitting FLAG{IKnowYou}.
+      </P>        
+      <form>
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="introButton">Submit</button>         
+        </div>  
+      </form>
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWOTD" aria-expanded="false" aria-controls="collapseExample">
+    Whispers of the Departed
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseWOTD">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        The Caesar cipher, named after Julius Caesar who is rumored to have used it for confidential communication, is a classic and straightforward encryption technique. This method involves shifting the letters of the alphabet by a fixed number of positions. For instance, with a shift of 3, 'A' becomes 'D', 'B' becomes 'E', and so on.
+      </p>
+      <p>
+        The Caesar cipher is one of the oldest and simplest forms of encryption. Its roots can be traced back to ancient Rome, where Julius Caesar is believed to have used it to encode his private messages. The concept is elegant in its simplicity: by shifting the letters of the alphabet, a message is transformed into a coded version that can only be deciphered with the knowledge of the shift value.
+      </p>  
+      <p>
+        Despite its historical significance, the Caesar cipher is relatively easy to break using modern cryptographic methods due to its limited key space. However, it serves as an essential building block in the understanding of more complex encryption techniques and lays the foundation for cryptographic principles.
+      </p>
+      <p>
+        <a href="{{ url_for('static', filename='Sophia\'s Background') }}" target="_blank">Here</a> is an encrypted text file that contains important information.
+      </p>
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="wodButton">Submit</button>         
+        </div>  
+      </form>                                                                                                                                                                                                                                                                                                                                                                                                                  
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTEN" aria-expanded="false" aria-controls="collapseExample">
+    The Enigmatic Note
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseTEN">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        Base64 is a binary-to-text encoding method that converts binary data into a set of 64 characters, making it suitable for text-based communication. It uses a specific character set (A-Z, a-z, 0-9, +, /) to represent binary information.
+      </p>
+      <p>
+        Encoding Process: Binary data is divided into groups of 3 bytes, converted into a 24-bit number, and then split into four 6-bit numbers. These 6-bit numbers are represented by characters from the Base64 character set.
+      </p>
+      <p>
+        Padding: If the binary data length is not a multiple of 3, padding with '=' is used.
+      </p>
+      <p>
+        Use Cases: Commonly used for embedding binary data in text formats, such as images in HTML or email attachments.
+      </p>
+      <p>
+        Base64 is widely employed in web development, data transmission, and various applications where binary data needs to be represented in a text-friendly format.
+      </p>
+      <p>
+        Upon scouring Sophia's computer, you noticed a file named "Sophia's Diary", but the contents are encoded. Click <a href="{{ url_for('static', filename='Sophia\'s Diary') }}" target="_blank">here</a> to see the file.
+      </p>
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="tenButton">Submit</button>         
+        </div>  
+      </form>
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCT" aria-expanded="false" aria-controls="collapseExample">
+    Cryptic Trails
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseCT">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        You found a note in Sophia's desktop. They are just numbers. Maybe they are not important. But <a href="{{ url_for('static', filename='Sophia\'s Note') }}" target="_blank">here's</a> the note anyway.
+      </p>  
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="ctButton">Submit</button>         
+        </div>  
+      </form>                                                                                                                                                                                                                                                                                                                                                                                                                  
+    </div>
+  </div>
+  
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDSW" aria-expanded="false" aria-controls="collapseExample">
+    Decrypting Secret Wish
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseDSW">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        The Vigenère cipher is a polyalphabetic substitution cipher that adds complexity to traditional substitution methods. Instead of a fixed shift as in the Caesar cipher, the Vigenère cipher uses a keyword to determine variable shifts for each letter in the plaintext, making it more resistant to frequency analysis. Although it provides a level of security, the Vigenère cipher can be deciphered with methods like Kasiski examination for longer ciphertexts.
+      </p>
+      <p>
+        seen
+      </p>
+      <p>
+        Llmayw M jsrx gzmw 2024:<br>
+        Cjsjrkwmbfep Psqies Iuhatqrfx<br>
+        Qrvmgnd Wgugsp Cjitnjexvgr Fbgow<br>
+        Njxmfsrey Usjswi Qnciv<br>
+        Gjezrd Nshjrey<br>
+        Kyffuvmclmsa ls Wpairgajmp Bsyefepf<br>
+
+        XPET{QsyPsrxPsxguEi}
+      </p>
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="dswButton">Submit</button>         
+        </div>  
+      </form>
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMTM" aria-expanded="false" aria-controls="collapseExample">
+    Metadata Mayhem
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseMTM">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        Metadata is essential information that provides context and details about other data. In digital content, it includes details such as the creation date, authorship, and file size, offering valuable insights into the content's origin and characteristics. Metadata plays a crucial role in organizing, managing, and understanding data, facilitating efficient retrieval and utilization across various platforms and applications.
+      </p>   
+      <p>
+        Behold! You've stumbled upon an image of Sophia's feline sidekick. What an utterly captivating and moody cat she boasts! Dive into the excitement by clicking <a href="{{ url_for('static', filename='Sophia\'s Cat.jpg') }}" download>here</a>  to get a closer look at her fascinating companion.
+      </p>   
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="mmButton">Submit</button>         
+        </div>  
+      </form>                                                                                                                                                                                                                                                                                                                                                                                                              
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBTS" aria-expanded="false" aria-controls="collapseExample">
+    Beyond The Screen
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseBTS">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        You have gained access to Sophia's garage camera. Inspect how the camera works. Click <a href="{{ url_for('garage') }}" target="_blank">here</a> to open her webcam. Adjust the camera's position by moving your cursor.
+      </p>
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="btsButton">Submit</button>         
+        </div>  
+      </form>
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFTMT" aria-expanded="false" aria-controls="collapseExample">
+    Following The Money Trail
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseFTMT">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        You've obtained Sophia's bank number: 374245455400126. You just need her pin. Maybe she uses a common numeric pin [******] and is easy to guess. Click <a href="{{ url_for('bank') }}" target="_blank">here</a> to visit her bank's website. 
+      </p>
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="ftmtButton">Submit</button>         
+        </div>  
+      </form>                                                                                                                                                                                                                                                                                                                                                                                                                    
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVA" aria-expanded="false" aria-controls="collapseExample">
+    Virtual Artifacts
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseVA">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        You've come across a photo of Sophia in her lab gown, but there seems to be an anomaly. Maybe you can dim the lights and find out.
+      </p>        
+      <p>
+        Click <a href="{{ url_for('static', filename='Sophia\'s Picture.png') }}" download>here</a> to see her picture.
+      </p>     
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="vaButton">Submit</button>         
+        </div>  
+      </form>                                                                                                                                                                                                                                                                                                                                                                                                       
+    </div>
+  </div>
+  
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHIPS" aria-expanded="false" aria-controls="collapseExample">
+    Hidden In Plain Sight
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseHIPS">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        The flag is here somewhere in this page.
+      </p>    
+      <!-- FLAG{YoureGettingTooClose} -->                                                                                                                                                                                                                                                                                                                                                                                                            
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="hipsButton">Submit</button>         
+        </div>  
+      </form>
+    </div>
+  </div>
+
+  <button class="btn btn-secondary wide mt-2 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWITA" aria-expanded="false" aria-controls="collapseExample">
+    Who Is The Abductor?
+  </button>  
+  <div class="collapse mb-2 collapse-index" id="collapseWITA">
+    <div class="indicator"></div>
+    <div class="card card-body">
+      <p>
+        Let's unveil the true identity of this nefarious character! While deeply engrossed in your investigation, a thrilling revelation unfolds—a new terminal window mysteriously opens on your computer, swiftly downloading an <a href="{{ url_for('static', filename='0000.tar.gz') }}" download>archived file</a> that went completely unnoticed. What secrets might be concealed within this enigmatic file? The suspense intensifies!
+      </p>   
+      <form action="">
+        <label class="visually-hidden" for="autoSizingInputGroup">Flag</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="FLAG{...}" required>
+          <button class="btn btn-success" id="witaButton">Submit</button>         
+        </div>  
+      </form>                                                                                                                                                                                                                                                                                                                                                                                                                 
+    </div>
+  </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    $("form").submit(e => {
+      e.preventDefault();
+    });    
+
+    function getUpdates() {
+      fetch("{{ url_for('get_index') }}", {
+        method: 'GET',
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      }).then(res => {
+        return res.json();
+      }).then(data => {
+        let row = data.row;
+        let score = data.score;
+        $("#score")[0].innerHTML = score;
+
+        if (row['intro'] !== 0) {
+          $(".btn-secondary")[0].classList.add("btn-danger");
+          $(".indicator")[0].classList.add("indicator-success");
+          $(".btn-success")[0].setAttribute('disabled', 'disabled');
+        }
+        
+        if (row['wod'] !== 0) {
+          $(".btn-secondary")[1].classList.add("btn-danger");
+          $(".indicator")[1].classList.add("indicator-success");
+          $(".btn-success")[1].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['ten'] !== 0) {
+          $(".btn-secondary")[2].classList.add("btn-danger");
+          $(".indicator")[2].classList.add("indicator-success");
+          $(".btn-success")[2].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['ct'] !== 0) {
+          $(".btn-secondary")[3].classList.add("btn-danger");
+          $(".indicator")[3].classList.add("indicator-success");
+          $(".btn-success")[3].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['dsw'] !== 0) {
+          $(".btn-secondary")[4].classList.add("btn-danger");
+          $(".indicator")[4].classList.add("indicator-success");
+          $(".btn-success")[4].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['mm'] !== 0) {
+          $(".btn-secondary")[5].classList.add("btn-danger");
+          $(".indicator")[5].classList.add("indicator-success");
+          $(".btn-success")[5].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['bts'] !== 0) {
+          $(".btn-secondary")[6].classList.add("btn-danger");
+          $(".indicator")[6].classList.add("indicator-success");
+          $(".btn-success")[6].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['ftmt'] !== 0) {
+          $(".btn-secondary")[7].classList.add("btn-danger");
+          $(".indicator")[7].classList.add("indicator-success");
+          $(".btn-success")[7].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['va'] !== 0) {
+          $(".btn-secondary")[8].classList.add("btn-danger");
+          $(".indicator")[8].classList.add("indicator-success");
+          $(".btn-success")[8].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['hips'] !== 0) {
+          $(".btn-secondary")[9].classList.add("btn-danger");
+          $(".indicator")[9].classList.add("indicator-success");
+          $(".btn-success")[9].setAttribute('disabled', 'disabled');
+        }
+
+        if (row['wita'] !== 0) {
+          $(".btn-secondary")[10].classList.add("btn-danger");
+          $(".indicator")[10].classList.add("indicator-success");
+          $(".btn-success")[10].setAttribute('disabled', 'disabled');
+        }
+      })
+    }
+
+    getUpdates();
+
+    setInterval(function() {
+      getUpdates();
+    }, 2000);
+
+    $(".btn-success").on("click", e => {
+      let name = e.target['id']
+      let value = e.target.previousElementSibling['value'];
+      if (value !== '') {
+        e.target.setAttribute('disabled', 'disabled')
+        setTimeout(function() {
+          e.target.removeAttribute('disabled', 'disabled')
+        }, 30000)
+        fetch("{{ url_for('post_index') }}", {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: name,
+            value: value
+          })
+        }).then(res => {
+          if (res.ok) {
+            console.log("POST SUCCESSFUL: " + res.status);
+            getUpdates();
+          } else {
+            console.log("POST HAS AN ERROR: " + res.status);
+          }
+          
+        }).catch(err => {
+          console.error("POST FAILED: " + err);
+        })
+      }
+    })
+    
+    
+  })
+</script>
+{% endblock %} 

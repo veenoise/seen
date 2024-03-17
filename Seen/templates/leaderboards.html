@@ -1,0 +1,89 @@
+{% extends "index-base.html" %}
+{% block title%}Seen | Leaderboards{% endblock %}
+{% block home %}
+<a class="nav-link btn btn-dark" href="{{ url_for('index') }}">Home</a>
+{% endblock%}
+{% block team %}
+<a class="nav-link btn btn-dark" href="{{ url_for('team') }}">Team</a>
+{% endblock%}
+{% block leaderboards %}
+<a class="nav-link active d-flex align-items-center" aria-current="page" href="{{ url_for('leaderboards') }}">
+  <img src="{{ url_for('static', filename='awards.png') }}" alt="awards" width="25" height="25">
+  <span id="score">0</span>
+</a>
+{% endblock%}
+
+{% block content%}
+<div class="container mt-4">
+  <table class="table table-dark table-striped table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col" class="col-4">#</th>
+        <th scope="col" class="col-4">Team Name</th>
+        <th scope="col" class="col-4">Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ rows.index(row) + 1 }}</td>
+        <td>{{ row['name'] }}</td>
+        <td>{{ row['score'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table class="table table-info table-hover table-responsive">
+    <tbody>
+      <tr>
+        <td class="col-4">{{ team_standing['Rank_no'] }}</td>
+        <td class="col-4">{{ team_standing['name'] }}</td>
+        <td class="col-4">{{ team_standing['score'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    function updateScore () {
+      fetch("{{ url_for('get_index') }}", {
+        method: 'GET', 
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => {
+        return res.json()
+      }).then(data => {
+        let score = data.score;
+        $('#score')[0].innerHTML = score;
+      })
+    }
+
+    updateScore();
+
+    setInterval(function() {
+      updateScore(),
+      updateTable()
+    }, 3000)
+
+    function updateTable() {
+      fetch("{{ url_for('get_leaderboards') }}", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'text/html'
+        }
+      }).then(res => {
+        return res.json()
+      }).then(data => {
+        $('div.container').replaceWith(data)
+      })
+    }
+
+    updateTable();
+  })
+</script>
+{% endblock %}

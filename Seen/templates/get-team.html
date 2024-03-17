@@ -1,0 +1,51 @@
+<tbody>
+  {% if role == 'Leader' %}
+    {% for i in item %}
+      <tr>
+        <td>{{ i['username'] }}</td>
+        <td>{{ i['role'] }}</td>
+        <td>
+          {% if i['role'] == 'Leader' %}
+            <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Leave</button>
+          {% elif i['role'] == 'Member' %}
+            <button type="button" class="btn btn-success" name="{{ i['username'] }}">Promote</button>
+            <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Kick</button>
+          {% elif i['role'] == 'Pending' %}
+            <button type="button" class="btn btn-success" name="{{ i['username'] }}">Accept</button>   
+            <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Reject</button>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+
+  {% elif role == 'Member' %}
+    {% for i in item %}
+      <tr>
+        <td>{{ i['username'] }}</td>
+        <td>{{ i['role'] }}</td>
+        <td>
+          {% if i['username'] == session['username'] %}
+            <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Leave</button>
+
+          {% elif i['role'] == 'Pending' %}
+            <button type="button" class="btn btn-success" name="{{ i['username'] }}">Accept</button>   
+            <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Reject</button>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+
+  {% else %}
+    {% for i in item %}
+      <tr>
+        <td>{{ i['username'] }}</td>
+        <td>{{ i['role'] }}</td>
+        <td>
+          {% if i['username'] == session['username'] %}
+            <button type="button" class="btn btn-danger" name="{{ i['username'] }}">Leave</button>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  {% endif %}
+</tbody>
